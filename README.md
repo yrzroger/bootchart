@@ -17,8 +17,10 @@ Android Boot Time 分析工具
 ## 完成后，请删除 /data/bootchart/enabled 以防止每次开机都收集数据。
 
 # 对比两次开始时间的差异
-1. 把两次开机的bootchart资料抓取到本地，比如log1/log2两个目录下
-2. 执行 ./compare-bootcharts.py log1 log2
+1. 第一次开机后执行./grab-bootchart.sh 后开机资料抓到了log目录下，重命名为log1
+2. 第二次开机后执行./grab-bootchart.sh 后开机资料抓到了log目录下，重命名为log2
+3. 执行 ./compare-bootcharts.py log1 log2 比较开机时间差异
+   ![image](https://github.com/user-attachments/assets/f8f009de-ad6c-4d01-b5eb-c15bfd9b182d)
 
 # 参考
-https://source.android.com/docs/core/perf/boot-times?hl=zh-cn#bootchart
+   https://source.android.com/docs/core/perf/boot-times?hl=zh-cn#bootchart
