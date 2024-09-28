@@ -1,0 +1,81 @@
+** Bugs:
+
+* FIXME: are we merging / glupping threads properly ?
+	+ how can sreadahead apparently be doing no I/O ? :-)
+
+	+ extend rectangles in rendered output to note when
+	  processes truly exit to improve duration rendering.
+		+ expand the tasks API for this.
+
+* Tracing metrics:
+	+ traced %d processes of $$ (!) :-)
+	+ consumed %d seconds of CPU [ render these ... ]
+
+	+ horizontal zoom - should keep view horiz centered:
+	  but does not - cf. set_xscale
+
+	+ merge processes for CPU counts:
+		+ if the ns count is -identical- (and non-zero) it is the same process
+			+ need to back-merge somehow ?
+			+ 'forked' ? ...
+			+ or can we do this by pid ? [ prolly ! ]
+
+	+ fix cumulative graphing - and boundary box bits
+
+	+ re-write ever more of bootchartd from shell into C ...
+		+ make the --dump thing return a success status,
+		+ poll the remote process (with ptrace ? - hmm ...)
+			+ to see if it has finished (?)
+			+ a good idea ? or will it introduce error ?
+			+ hmm.
+		+ have a 20 second delay before starting to poll it ?
+
+** Features:
+
+Add some tabs to the interactive renderer to show the raw files:
+kernel dmesg, header, and perhaps the full (processed) cmdline2 log
+
+Use the same stats that Intel's tracer uses of I/O / scheduling foo ...
+	+ use them to avoid taskstats polling if there has been
+	  no scheduled timeslice (?)
+
+Graph the swap / I/O delay stuff inside the bar (?)
+
+Account for the time taken to run the bootchart-collector ...
+	+ scale all other times by this ammount [!] ;-)
+	+ to make it -appear- as if it doesn't impact the system :-)
+
+* render I/O data backwards ... :-)
+	+ back-propagate delays that are longer than a rendered slice 
+
+Scale time discontinuously ? [ make the first seconds much longer ? ]
+	+ fun ! :-)
+
+Remove 'merge_logger' - no longer necessary - it's just one app ...
+	+ potentially we should hide / remove it though :-)
+
+* Better data processing / shrinkage:
+	+ post process in C code as we dump the data
+	+ why process the data in python ? can't we do it earlier ?
+		+ adjust the previous sample etc.
+	+ /proc/stat post-processing:
+		+ which fields do we actually parse & need ?
+
+Process taskstats in advance
+	+ elide all non-useful lines:
+		+ ie. no-changes in various fields
+
+* Export ODF, with a number of pie charts in it etc.
+	+ export cumulative data for rendering in ods ?
+	+ rather than adding manual rendering - which sucks (!?)
+	+ fun ... :-)
+
+
+Notes:
+	+ SUSE initrd debugging; use "'shell=1'" - is dead good ...
+
+
+
+#18a303 - Tango / Green 
+
+#2da31b  - to same saturation
