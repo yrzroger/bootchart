@@ -24,3 +24,7 @@ Android Boot Time 分析工具
 
 # 参考
    https://source.android.com/docs/core/perf/boot-times?hl=zh-cn#bootchart
+   1. 脚本工具都在原生代码目录下：
+   system/core/init/grab-bootchart.sh
+   system/core/init/compare-bootcharts.py
+   2. 高版本的ubuntu没法用apt直接安装bootchart,所以需要自己git clone,并设置grab-bootchart.sh中pybootchartgui的路径，而次工程中提供的正式基于此做了调整，直接下载后有使用。
