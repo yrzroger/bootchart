@@ -13,6 +13,9 @@ Android Boot Time 分析工具
 7. Linux平台执行 ./grab-bootchart.sh 会自动把设备上的bootchart抓下来并生成 bootchart.png
    ![image](https://github.com/user-attachments/assets/aee035cb-0b56-4d8e-b9a2-ebf65b28ae88)
 9. 分析 bootchart.png 的时间信息
+   比如模拟上的开机时间
+   ![image](https://github.com/user-attachments/assets/f02af19d-7400-43bf-ba99-619dde383ee4)
+
 
 ## 完成后，请删除 /data/bootchart/enabled 以防止每次开机都收集数据。
 
